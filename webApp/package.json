@@ -15,10 +15,12 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "cordova-browser": "^5.0.3",
     "onsenui": "~2.7.2",
     "vue": "^2.5.0",
     "vue-onsenui": "~2.3.0",
-    "vuex": "^3.0.0"
+    "vuex": "^3.0.0",
+    "cordova-plugin-whitelist": "1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -97,5 +99,13 @@
     "Safari >= 9",
     "Firefox ESR",
     "Opera 12.1"
-  ]
+  ],
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {}
+    },
+    "platforms": [
+      "browser"
+    ]
+  }
 }
