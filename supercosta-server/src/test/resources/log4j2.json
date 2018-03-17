@@ -1,0 +1,49 @@
+{
+  "configuration": {
+    "name": "Default",
+    "properties": {
+      "property": [
+        {
+          "name": "log-path",
+          "value": "logs"
+        },
+        {
+          "name": "archive",
+          "value": "${log-path}/archive"
+        }
+      ]
+    },
+    "appenders": {
+      "Console": {
+        "name": "Console-Appender",
+        "target": "SYSTEM_OUT",
+        "PatternLayout": {
+          "pattern": "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+        }
+      },
+	  "RollingFile": {
+	    "name": "RollingFile-Appender",
+	    "fileName": "${log-path}/systemLog.log",
+	    "filePattern": "${archive}/systemLog.log.%d{yyyy-MM-dd-hh-mm}.gz",
+	    "append": false,
+	    "PatternLayout": {
+		  "pattern": "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+	    },
+	    "Policies": {
+		  "SizeBasedTriggeringPolicy": {
+		    "size": "50 MB"
+		  }
+  	    },
+	    "DefaultRolloverStrategy": {
+		  "max": "30"
+	    }
+	  }
+    },
+    "loggers": {
+      "root": {
+        "level": "debug",
+        "appender-ref": [{"ref": "Console-Appender"}, {"ref": "RollingFile-Appender"}]
+      }
+    }
+  }
+}
